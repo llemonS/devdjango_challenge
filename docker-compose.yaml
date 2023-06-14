@@ -1,9 +1,16 @@
 version: "3.2"
 services:
-  redis:
-    image: redis:alpine
+  rabbit:
+    image: rabbitmq:3-management
+    container_name: rabbit
+    hostname: rabbit
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      - RABBITMQ_DEFAULT_VHOST=/
     ports:
-      - "6379:6379"
+      - "5682:5672"
+      - "15682:15672"
     networks:
       - db-net
   db:
@@ -35,13 +42,28 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - redis
+      - rabbit
       - db
+    networks:
+      - db-net
+  frontend:
+    restart: always
+    command : npm start
+    container_name: react
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/devdjango_challenge/frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - backend
     networks:
       - db-net
 volumes:
   postgres_data:
-
 networks:
   db-net:
     driver: bridge

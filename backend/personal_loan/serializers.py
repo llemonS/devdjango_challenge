@@ -32,11 +32,6 @@ class PersonalLoanSerializer(ModelSerializer):
     name = CharField(max_length=200, required=True)
     cpf = CharField(
         max_length=14,
-        validators=[
-            RegexValidator(
-                regex=r"^\d{3}\.\d{3}\.\d{3}-\d{2}$", message="Invalid CPF format"
-            )
-        ],
         required=True,
     )
     address = CharField(required=True)
@@ -51,3 +46,4 @@ class PersonalLoanSerializer(ModelSerializer):
             raise ValidationError("Cpf must have 11 digits.")
         else:
             return cpf
+        

@@ -6,6 +6,7 @@ pip install -r requirements.txt
 echo "Applying migrations..."
 python manage.py makemigrations
 python manage.py migrate
+python manage.py shell < createsuperuser.py
 
 echo "Initializing backend worker..."
 celery -A backend worker -l info &
