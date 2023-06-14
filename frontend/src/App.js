@@ -61,19 +61,19 @@ function App() {
             <Form onSubmit={handleSubmit}>
               <FormGroup>
                 <Label for="name">
-                  Nome
+                  <h4>Nome:</h4>
                 </Label>
                 <Input id="name" name="name" placeholder="Insira o nome." value={formData.name} onChange={handleInputChange}/>
                 <Label for="cpf">
-                  Número de CPF
+                  <h4>Número de CPF:</h4>
                 </Label>
                 <Input id="cpf" name="cpf" placeholder="000.000.000-00." value={formData.cpf} onChange={handleInputChange}/>
                 <Label for="address">
-                  Endereço
+                  <h4>Endereço:</h4>
                 </Label>
                 <Input id="address" name="address" placeholder="Rua anonima, numero x, bairro y, UF." type="textarea" value={formData.address} onChange={handleInputChange}/>
                 <Label for="loan_value">
-                  Valor do Empréstimo
+                  <h4>Valor do Empréstimo: </h4>
                 </Label>
                 <Input id="loan_value" name="loan_value" placeholder="1000.00" type='number' value={formData.loan_value} onChange={handleInputChange}/>
               </FormGroup>
