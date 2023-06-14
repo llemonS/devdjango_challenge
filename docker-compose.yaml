@@ -46,9 +46,24 @@ services:
       - db
     networks:
       - db-net
+  frontend:
+    restart: always
+    command : npm start
+    container_name: react
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/devdjango_challenge/frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - backend
+    networks:
+      - db-net
 volumes:
   postgres_data:
-
 networks:
   db-net:
     driver: bridge

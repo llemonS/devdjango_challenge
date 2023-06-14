@@ -22,7 +22,7 @@ class PersonalLoanApiTestCase(TestCase):
 
     def test_proposal_loan_get(self):
         """
-        Make sure that whena get is made, the status code returns 405.
+        Make sure that when a get is made, the status code returns 405.
         """
         response = self.client.get(reverse("personal_loan"))
         response_content = response.content.decode("utf-8")
@@ -32,7 +32,7 @@ class PersonalLoanApiTestCase(TestCase):
 
     def test_proposal_loan_post_incomplete(self):
         """
-        Make sure that when a incomplete post is made, the status code returns 201.
+        Make sure that when a incomplete post is made, the status code returns 400.
         """
         payload = {
             "name": "",
@@ -50,11 +50,11 @@ class PersonalLoanApiTestCase(TestCase):
 
     def test_proposal_loan_post_wrong_cpf(self):
         """
-        Make sure that when a incomplete post is made, the status code returns 201.
+        Make sure that when a incomplete post is made, the status code returns 400.
         """
         payload = {
             "name": "name",
-            "cpf": "154.245.25651",
+            "cpf": "154245256512",
             "address": "anonymous street",
             "loan_value": 10000.00,
         }
@@ -63,12 +63,12 @@ class PersonalLoanApiTestCase(TestCase):
         )
         response_content = response.content.decode("utf-8")
         response_dict = json.loads(response_content)
-        self.assertEqual(response_dict, {"cpf": ["Invalid CPF format"]})
+        self.assertEqual(response_dict, {'cpf': ['Cpf must have 11 digits.']})
         self.assertEqual(response.status_code, 400)
 
     def test_proposal_loan_post(self):
         """
-        Make sure that when a post is made, the status code returns 201.
+        Make sure that when a correct post is made, the status code returns 201.
         """
         payload = {
             "name": "jose",
