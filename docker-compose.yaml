@@ -1,0 +1,47 @@
+version: "3.2"
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - db-net
+  db:
+    image: postgres
+    expose:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgresdigitalsysdjango_user
+      - POSTGRES_PASSWORD=postgresdigitalsysdjango_passwd
+    networks:
+      - db-net
+
+  backend:
+    restart: always
+    container_name: digitalsys_challenge
+    entrypoint: ./init.sh
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/devdjango_challenge/backend
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgresdigitalsysdjango_user
+      - POSTGRES_PASSWORD=postgresdigitalsysdjango_passwd
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+    networks:
+      - db-net
+volumes:
+  postgres_data:
+
+networks:
+  db-net:
+    driver: bridge
