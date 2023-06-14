@@ -9,8 +9,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=admin
       - RABBITMQ_DEFAULT_VHOST=/
     ports:
-      - "5682:5672"
-      - "15682:15672"
+      - "5672"
     networks:
       - db-net
   db:

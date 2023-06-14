@@ -25,10 +25,14 @@ SECRET_KEY = "django-insecure-fvot@bla5g4nttao81gz5g^g0*6qcp5+@btf*!l3wl9&p502h=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
-CORS_ORIGIN_WHITELIST = ["http://0.0.0.0:3000", "http://localhost:3000"]
-
-
+ALLOWEDCORS_ORIGIN_ALLOW_ALL = TrueCORS_ALLOW_CREDENTIALS = True_HOSTS = ["0.0.0.0", "localhost", "llemons-obscure-bassoon-979qg69g577294p5-8000.preview.app.github.dev"]
+CORS_ORIGIN_WHITELIST = ["http://0.0.0.0:3000", "http://localhost:3000", "https://llemons-obscure-bassoon-979qg69g577294p5-3000.preview.app.github.dev"]
+CORS_ORIGIN_ALLOW_ALL = False
+#CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    'https://llemons-obscure-bassoon-979qg69g577294p5-8000.preview.app.github.dev',
+    'https://llemons-obscure-bassoon-979qg69g577294p5-3000.preview.app.github.dev'
+]
 # Application definition
 
 INSTALLED_APPS = [

@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://0.0.0.0:8000",
+  "proxy": "https://llemons-obscure-bassoon-979qg69g577294p5-8000.preview.app.github.dev",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

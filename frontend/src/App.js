@@ -11,7 +11,7 @@ import axios from 'axios';
 
 function App() {
 
-  const serverUrl = 'http://0.0.0.0:8000';
+  const serverUrl = 'https://llemons-obscure-bassoon-979qg69g577294p5-8000.preview.app.github.dev';
 
   const [formData, setFormData] = useState({
     name: '',
