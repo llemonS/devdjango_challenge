@@ -20,7 +20,7 @@ docker-compose exec -it backend python manage.py test
 ## Project Structure:
 
  - Django admin Panel:
-The admin can acces through the URL `http://0.0.0.0:8000/admin` using `superadmin` and `superpass` credentials.
+The admin can access it through the URL `http://0.0.0.0:8000/admin` using `superadmin` and `superpass` credentials.
  - Djando Rest Framework:
  Loans can be posted directly on the URL `http://0.0.0.0:8000/api/personal_loan/` if desired.
  - React Frontend:
@@ -34,4 +34,5 @@ The admin can acces through the URL `http://0.0.0.0:8000/admin` using `superadmi
   - Readme.md containing steps to run the project. ☑
   - Default user (`superadmin` `superpass`) ☑
   - Docstring coverage (out of initial scope) ☑
-  - TDD implemented (out of initial scope)☑
+  - TDD implemented (out of initial scope) ☑
+  - Dockerized application (out of initial scope) ☑
