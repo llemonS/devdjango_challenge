@@ -12,7 +12,7 @@ In order to run the project, one shall clone this repo and run:
 ```
 docker-compose up --build
 ```
-If you want to run tests:
+If you want to run tests on backend:
 ```
 docker-compose exec -it backend python manage.py test
 ```
