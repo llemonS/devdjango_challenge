@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "django_celery_results",
     "personal_loan",
 ]
 
@@ -93,13 +94,9 @@ DATABASES = {
     }
 }
 
-# celery
-CELERY_BROKER_URL = "redis://redis:6379/0"
-CELERY_RESULT_BACKEND = "redis://redis:6379/0"
-CELERY_ACCEPT_CONTENT = ["application/json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
-# CELERY_IMPORTS = ('personal_loan.tasks',)
+# Celery properties
+CELERY_BROKER_URL = 'amqp://admin:admin@rabbit:5672//'
+CELERY_RESULT_BACKEND = 'django-db'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

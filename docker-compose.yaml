@@ -1,9 +1,16 @@
 version: "3.2"
 services:
-  redis:
-    image: redis:alpine
+  rabbit:
+    image: rabbitmq:3-management
+    container_name: rabbit
+    hostname: rabbit
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      - RABBITMQ_DEFAULT_VHOST=/
     ports:
-      - "6379:6379"
+      - "5682:5672"
+      - "15682:15672"
     networks:
       - db-net
   db:
@@ -35,7 +42,7 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - redis
+      - rabbit
       - db
     networks:
       - db-net
