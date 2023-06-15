@@ -22,7 +22,7 @@ docker-compose exec -it backend python manage.py test
 
  - Django admin Panel:
 The admin can access it through the URL `http://0.0.0.0:8000/admin` using `superadmin` and `superpassword` credentials.
- - Djando Rest Framework:
+ - Django Rest Framework:
  Loans can be posted directly on the URL `http://0.0.0.0:8000/api/personal_loan/` if desired.
  - React Frontend:
  To register a new loan proposal form, the user can access `http://0.0.0.0:3000`
