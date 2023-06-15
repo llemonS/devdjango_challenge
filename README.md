@@ -12,14 +12,6 @@ Challenge to develop a management system for personal loan.
 ```
 docker-compose up --build
 ```
-2 - Install node modules using:
-```
-docker exec -it react sh -c "npm install"
-```
-3 - Stop the enviroment using `CTRL+C` and finally run:
-```
-docker-compose up
-```
 ## Backend Testing:
 If you want to run tests on backend:
 ```
